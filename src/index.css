@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Design tokens — Direction D: Soft Modern Gradient
+   Real dark mode (distinct dark surfaces, not inverted colors)
+   ============================================================ */
+@layer base {
+  :root {
+    --bg: 249 250 255;
+    --surface: 255 255 255;
+    --surface-2: 244 243 255;
+    --border: 228 228 245;
+    --text: 15 23 42;
+    --text-muted: 100 116 139;
+    --accent: 124 58 237; /* violet-600 */
+    --accent-2: 236 72 153; /* pink-500 */
+    --accent-3: 14 165 233; /* sky-500 */
+    --ring: 139 92 246;
+    color-scheme: light;
+  }
+
+  .dark {
+    --bg: 8 10 20;
+    --surface: 18 20 36;
+    --surface-2: 26 29 50;
+    --border: 39 42 66;
+    --text: 236 238 246;
+    --text-muted: 148 163 184;
+    --accent: 167 139 250; /* violet-400 for contrast on dark */
+    --accent-2: 244 114 182;
+    --accent-3: 56 189 248;
+    --ring: 167 139 250;
+    color-scheme: dark;
+  }
+
+  * {
+    border-color: rgb(var(--border));
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-body font-sans antialiased;
+    background-image:
+      radial-gradient(60rem 60rem at 110% -10%, rgb(var(--accent-2) / 0.10), transparent 60%),
+      radial-gradient(50rem 50rem at -10% 10%, rgb(var(--accent-3) / 0.10), transparent 55%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: rgb(var(--accent) / 0.25);
+  }
+
+  /* Focus ring for keyboard users */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-bg;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--border));
+    border-radius: 9999px;
+    border: 2px solid rgb(var(--bg));
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--text-muted) / 0.5);
+  }
+}
+
+/* ============================================================
+   Reusable component classes
+   ============================================================ */
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  /* Glassy card */
+  .card {
+    @apply rounded-3xl border border-line bg-surface/80 shadow-card backdrop-blur-xl;
+  }
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-glow;
+  }
+
+  .glass {
+    @apply border border-white/20 bg-white/10 backdrop-blur-xl dark:border-white/10 dark:bg-white/5;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-2.5 text-sm font-semibold transition-all duration-200 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-primary {
+    @apply btn bg-gradient-brand bg-[length:200%_200%] text-white shadow-glow hover:bg-[position:100%_50%] active:scale-[0.98];
+  }
+  .btn-secondary {
+    @apply btn border border-line bg-surface text-body hover:border-accent/40 hover:bg-surface-2;
+  }
+  .btn-ghost {
+    @apply btn text-muted hover:bg-surface-2 hover:text-body;
+  }
+  .btn-danger {
+    @apply btn bg-red-500 text-white hover:bg-red-600 active:scale-[0.98];
+  }
+
+  /* Form controls */
+  .input {
+    @apply w-full rounded-2xl border border-line bg-surface px-4 py-2.5 text-sm text-body placeholder:text-muted/70 transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-ring/40;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-body;
+  }
+
+  /* Chips / badges */
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full border border-line bg-surface-2 px-3 py-1 text-xs font-medium text-muted;
+  }
+  .badge-accent {
+    @apply inline-flex items-center gap-1 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-semibold text-accent;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-brand bg-clip-text text-transparent;
+  }
+
+  .section-eyebrow {
+    @apply mb-2 inline-block text-sm font-semibold uppercase tracking-widest text-accent;
+  }
+
+  /* Link underline animation */
+  .link-underline {
+    @apply relative after:absolute after:-bottom-0.5 after:left-0 after:h-0.5 after:w-0 after:rounded-full after:bg-gradient-brand after:transition-all after:duration-300 hover:after:w-full;
+  }
+}
+
+/* ============================================================
+   Markdown content (blog posts) — themed prose
+   ============================================================ */
+@layer components {
+  .prose-content {
+    @apply text-[1.05rem] leading-8 text-body/90;
+  }
+  .prose-content h2 {
+    @apply mt-10 mb-4 text-2xl font-bold tracking-tight text-body;
+  }
+  .prose-content h3 {
+    @apply mt-8 mb-3 text-xl font-bold tracking-tight text-body;
+  }
+  .prose-content p {
+    @apply my-4;
+  }
+  .prose-content a {
+    @apply font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent;
+  }
+  .prose-content ul {
+    @apply my-4 list-disc space-y-1.5 pl-6 marker:text-accent;
+  }
+  .prose-content ol {
+    @apply my-4 list-decimal space-y-1.5 pl-6 marker:text-muted;
+  }
+  .prose-content strong {
+    @apply font-semibold text-body;
+  }
+  .prose-content blockquote {
+    @apply my-6 rounded-r-xl border-l-4 border-accent bg-surface-2 px-5 py-3 italic text-muted;
+  }
+  .prose-content code {
+    @apply rounded-md bg-surface-2 px-1.5 py-0.5 font-mono text-[0.9em] text-accent;
+  }
+  .prose-content pre {
+    @apply my-6 overflow-x-auto rounded-2xl border border-line bg-[#0d1117] p-5 text-sm leading-6;
+  }
+  .prose-content pre code {
+    @apply bg-transparent p-0 text-slate-100;
+  }
+  .prose-content img {
+    @apply my-6 rounded-2xl border border-line;
+  }
+}
+
+/* Skeleton shimmer */
+.skeleton {
+  @apply relative overflow-hidden bg-surface-2;
+}
+.skeleton::after {
+  @apply absolute inset-0 -translate-x-full animate-shimmer;
+  content: '';
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(var(--text) / 0.06),
+    transparent
+  );
+}
