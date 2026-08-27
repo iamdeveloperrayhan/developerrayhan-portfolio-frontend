@@ -10,12 +10,8 @@ export function formatDate(value, opts = { year: 'numeric', month: 'short', day:
 }
 
 export function formatMonthYear(value) {
-  opts = {
-      year: 'numeric',
-      month: 'short'
-    }
   if (!value) return ''
-  return new Date(value).toLocaleDateString('en-US', opts)
+  return new Date(value).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })
 }
 
 // "Jan 2022 – Present" style range from date strings.

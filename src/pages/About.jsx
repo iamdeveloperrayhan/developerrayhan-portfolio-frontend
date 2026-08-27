@@ -120,7 +120,7 @@ export default function About() {
           <div className="relative space-y-8 border-l-2 border-line pl-8">
             {experiences.map((exp) => (
               <div key={exp.id} className="relative">
-                <span className="absolute -left-[41px] grid h-8 w-8 place-items-center rounded-full border-2 border-line bg-surface text-accent">
+                <span className="absolute -left-[50px] grid h-8 w-8 place-items-center rounded-full border-2 border-line bg-surface text-accent">
                   <Briefcase size={15} />
                 </span>
                 <div className="card p-6">

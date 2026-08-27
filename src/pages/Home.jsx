@@ -95,7 +95,7 @@ export default function Home() {
                   rel="noreferrer noopener"
                   className="btn-ghost"
                 >
-                  <Download size={17} /> Résumé
+                  <Download size={17} /> Resume
                 </a>
               )}
             </div>
