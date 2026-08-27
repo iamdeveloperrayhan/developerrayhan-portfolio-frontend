@@ -112,17 +112,17 @@ export default function ProfileManager() {
           </div>
 
           <div className="card p-6">
-            <span className="label">Résumé (PDF)</span>
+            <span className="label">Resume (PDF)</span>
             <label className="flex cursor-pointer items-center gap-3 rounded-xl border border-dashed border-line px-4 py-4 text-muted hover:border-accent/40 hover:text-accent">
               <FileText size={20} />
               <span className="min-w-0 flex-1 truncate text-sm font-medium">
-                {resumeFile ? resumeFile.name : profile?.resume ? 'Replace résumé' : 'Upload résumé'}
+                {resumeFile ? resumeFile.name : profile?.resume ? 'Replace resume' : 'Upload resume'}
               </span>
               <input type="file" accept="application/pdf" onChange={(e) => setResumeFile(e.target.files?.[0] || null)} className="hidden" />
             </label>
             {profile?.resume && !resumeFile && (
               <a href={profile.resume} target="_blank" rel="noreferrer noopener" className="mt-2 inline-block text-xs font-medium text-accent hover:underline">
-                View current résumé
+                View current resume
               </a>
             )}
             {err('resume') && <p className="mt-2 text-xs font-medium text-red-500">{err('resume')}</p>}
