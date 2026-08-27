@@ -73,7 +73,7 @@ export default function About() {
                 rel="noreferrer noopener"
                 className="btn-primary mt-5 w-full"
               >
-                <Download size={16} /> Download résumé
+                <Download size={16} /> Download resume
               </a>
             )}
           </div>

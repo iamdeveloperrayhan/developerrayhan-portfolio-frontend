@@ -107,7 +107,7 @@ export default function Login() {
           <div className="mt-4 flex items-center gap-2 rounded-2xl border border-dashed border-line p-4 text-xs text-muted">
             <Lock size={14} className="shrink-0" />
             <p>
-              <span className="font-semibold text-body">Demo:</span> owner&nbsp;/&nbsp;DevFolioDemo!2026
+              <span className="font-semibold text-body">Demo:</span> iamdeveloperrayhan&nbsp;/&nbsp;iamDeveloperRayhan!2026
             </p>
           </div>
         </div>

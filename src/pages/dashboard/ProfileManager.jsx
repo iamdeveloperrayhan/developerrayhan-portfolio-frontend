@@ -234,7 +234,7 @@ function ChangePassword() {
   }
 
   return (
-    <div className="card mt-6 max-w-2xl p-6">
+    <div className="card mt-6 p-6">
       <h3 className="mb-1 flex items-center gap-2 font-bold text-body"><KeyRound size={17} /> Change password</h3>
       <p className="mb-4 text-sm text-muted">Update the password for your owner account.</p>
       <form onSubmit={submit} className="space-y-4">
